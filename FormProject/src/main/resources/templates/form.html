@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>IT Company Placement Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-image: url('green_background.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background for form readability */
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #0f4d0f; /* Form heading color */
+            text-align: center;
+        }
+
+        h4{
+            color: #0f4d0f; /* Section heading color */
+        }
+
+        .form-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .row .form-group {
+            padding-right: 10px;
+        }
+
+        .btn-primary {
+            background-color: #0f4d0f;
+            border-color: #0f4d0f;
+        }
+
+        .btn-primary:hover {
+        background-color: #086108; /* Darker shade for hover */
+        border-color: #086108;     /* Matching border color for hover */
+        }
+        .form-control:hover{
+            background-color: rgba(15, 77, 15,0.2);
+        }
+     
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>IT Company Placement Application Form</h2>
+
+        <form th:action="@{/submitForm}" th:object="${formSubmission}" method="post">
+            <!-- Personal Information Section -->
+            <div class="form-section">
+                <h4>Personal Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter your full name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Enter your email" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="phone">Contact Number:</label>
+                            <input type="tel" class="form-control" id="phone" th:field="*{phone}" placeholder="Enter your contact number" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Educational Information Section -->
+            <div class="form-section">
+                <h4>Educational Information</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="university">University/Institute Name:</label>
+                            <input type="text" class="form-control" id="university" th:field="*{university}" placeholder="Enter your university or institute name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="branch">Branch/Discipline:</label>
+                            <input type="text" class="form-control" id="branch" th:field="*{branch}" placeholder="Enter your branch (e.g., Computer Science, IT)" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="degree">Degree:</label>
+                            <input type="text" class="form-control" id="degree" th:field="*{degree}" placeholder="Enter your degree (e.g., B.Tech, M.Tech)" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="year">Year of Graduation:</label>
+                            <input type="number" class="form-control" id="year" th:field="*{graduationYear}" placeholder="Enter your year of graduation" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cgpa">CGPA/Percentage:</label>
+                            <input type="text" class="form-control" id="cgpa" th:field="*{cgpa}" placeholder="Enter your CGPA or percentage" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Skills Section -->
+            <div class="form-section">
+                <h4>Technical Skills</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="programmingLanguages">Programming Languages:</label>
+                            <input type="text" class="form-control" id="programmingLanguages" th:field="*{programmingLanguages}" placeholder="List your programming languages (e.g., Java, Python, C++)" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="toolsTechnologies">Tools & Technologies:</label>
+                            <input type="text" class="form-control" id="toolsTechnologies" th:field="*{toolsTechnologies}" placeholder="List tools and technologies you're familiar with (e.g., Git, Docker, AWS)" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Job Preferences Section -->
+            <div class="form-section">
+                <h4>Job Preferences</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="preferredJobRole">Preferred Job Role:</label>
+                            <input type="text" class="form-control" id="preferredJobRole" th:field="*{preferredJobRole}" placeholder="Enter the job role you're applying for (e.g., Software Engineer, DevOps)" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="location">Preferred Job Location:</label>
+                            <input type="text" class="form-control" id="location" th:field="*{preferredLocation}" placeholder="Enter your preferred job location" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </form>
+
+        <!-- Success Message -->
+        <div th:if="${message}">
+            <p class="alert alert-success mt-3" th:text="${message}"></p>
+        </div>
+    </div>
+</body>
+</html>
